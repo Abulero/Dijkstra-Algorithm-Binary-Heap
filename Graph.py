@@ -14,7 +14,7 @@ import sys
 class Heap:
     def __init__(self, size):
         self.size = size    # Amount of nodes in the heap
-        self.nodes = []     # Array of nodes in a binary heap
+        self.nodes = []     # Array of nodes in a binary heap [number, distance from start, "already visited" flag]
         self.positions = [] # Array that shows the position in the heap of a node
 
     # Check if the program finished visiting all of the heap's nodes
@@ -33,13 +33,9 @@ class Heap:
         self.positions[self.nodes[node_a_index][0]] = node_a_index
         self.positions[self.nodes[node_b_index][0]] = node_b_index
 
-    # Returns if a node is in the "valid" portion of the heap. In other words, verifies if that node
-    # has not been pushed to the end of the heap by the extract_min method
-    def is_in_heap(self, node):
-        for i in range(self.size):
-            if node == self.nodes[i][0]:
-                return True
-        return False
+    # Returns wether a node has already been visited or not
+    def already_visited(self, node):
+        return self.nodes[self.positions[node]][2]
 
     # Method to return the root node (shortest distance from start) and swap it with the last
     # node in the heap, while lowering the heap's size by 1, thus removing the root node from the
@@ -49,6 +45,9 @@ class Heap:
         root = self.nodes[0]
 
         self.swap(0, self.size - 1)
+
+        # Marking the removed node as  "already visited"
+        self.nodes[self.size - 1][2] = True
 
         self.size -= 1
 
@@ -132,7 +131,7 @@ class Graph:
         # STEP 2
         for vertex in range(self.size): # O(V) time complexity
             distance_from_start.append(sys.maxsize)
-            min_heap.nodes.append([vertex, distance_from_start[vertex]])
+            min_heap.nodes.append([vertex, distance_from_start[vertex], False])
             min_heap.positions.append(vertex)
 
         distance_from_start[start] = 0
@@ -146,7 +145,7 @@ class Graph:
             
             # STEP 5
             for v, distance in self.adjacency_list[u]: # O(E) time complexity
-                if min_heap.is_in_heap(v) and distance_from_start[u] + distance < distance_from_start[v]:
+                if not min_heap.already_visited(v) and distance_from_start[u] + distance < distance_from_start[v]:
                     distance_from_start[v] = distance_from_start[u] + distance
                     min_heap.ascend(v, distance_from_start[v]) # O(Log V) time complexity
 
