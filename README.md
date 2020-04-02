@@ -1,6 +1,6 @@
 # DijkstraAlgorithmBinaryHeap
 
-Simple implementation of a Dijkstra algorithm in Python.  
+Simple implementation of a Dijkstra algorithm in Python using a Binary Heap as data structure to reduce time complexity.  
 Based on: https://www.geeksforgeeks.org/dijkstras-algorithm-for-adjacency-list-representation-greedy-algo-8/
 
 # Notes
