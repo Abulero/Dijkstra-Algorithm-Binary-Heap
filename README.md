@@ -36,27 +36,33 @@ graph.dijkstra_solution(start=0, end=5)
 
 # Time Complexity
 
-The algorithm involves, in total, 5 loops. Below we have all of them and their time complexity, where V = number of vertices and E = number of edges in the graph:
+The algorithm involves, in total, 5 loops.  
+Below we have all of them and their time complexity, where V = number of vertices and E = number of edges in the graph:
 
 ```
-for vertex in range(self.size) # O(V)
-```
-
-```
-while not min_heap.is_empty() # O(V)
-```
-
-```
-for v, distance in self.adjacency_list[u] # O(E)
+# O(V)
+for vertex in range(self.size)
 ```
 
 ```
-while index > 0 and self.nodes[index][1] < self.nodes[parent_index][1] # O(Log V)
+# O(V)
+while not min_heap.is_empty()
+```
+
+```
+# O(E)
+for v, distance in self.adjacency_list[u]
+```
+
+```
+# O(Log V)
+while index > 0 and self.nodes[index][1] < self.nodes[parent_index][1]
 ```
 
 
 ```
-while smallest != index # O(Log V)
+# O(Log V)
+while smallest != index
 ```
 
 Altogether we have:
