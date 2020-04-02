@@ -1,6 +1,6 @@
 # DijkstraAlgorithmPython
 
-Simple implementation of a Dijkstra algorithm in Python.
+Simple implementation of a Dijkstra algorithm in Python.  
 Based on: https://www.geeksforgeeks.org/dijkstras-algorithm-for-adjacency-list-representation-greedy-algo-8/
 
 # Notes
