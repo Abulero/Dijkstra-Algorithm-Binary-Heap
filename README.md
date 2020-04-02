@@ -48,6 +48,7 @@ while not min_heap.is_empty() # O(V)
 
 ```
 for v, distance in self.adjacency_list[u] # O(E)
+```
 
 ```
 while index > 0 and self.nodes[index][1] < self.nodes[parent_index][1] # O(Log V)
