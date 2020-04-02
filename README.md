@@ -38,29 +38,29 @@ graph.dijkstra_solution(start=0, end=5)
 
 The algorithm involves, in total, 5 loops. Below we have all of them and their time complexity, where V = number of vertices and E = number of edges in the graph:
 
-'''
+```
 for vertex in range(self.size) # O(V)
-'''
+```
 
-'''
+```
 while not min_heap.is_empty() # O(V)
-'''
+```
 
-'''
+```
 for v, distance in self.adjacency_list[u] # O(E)
 
-'''
+```
 while index > 0 and self.nodes[index][1] < self.nodes[parent_index][1] # O(Log V)
-'''
+```
 
 
-'''
+```
 while smallest != index # O(Log V)
-'''
+```
 
 Altogether we have:
 
-'''
+```
 for vertex in range(self.size): # O(V) time complexity
     distance_from_start.append(sys.maxsize)
     min_heap.nodes.append([vertex, distance_from_start[vertex], False])
@@ -77,7 +77,7 @@ while not min_heap.is_empty(): # O(V) time complexity
         if not min_heap.already_visited(v) and distance_from_start[u] + distance < distance_from_start[v]:
             distance_from_start[v] = distance_from_start[u] + distance
             min_heap.ascend(v, distance_from_start[v]) # O(Log V) time complexity
-'''
+```
 
 Which brings us to:
 
